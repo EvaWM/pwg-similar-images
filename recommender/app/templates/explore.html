@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+<div class="hero-container">
+  <div class="hero"></div>
+  <div class="description">
+      <h1>Explore the gallery</h1>
+      <p> Click on an image to view similar images </p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 themed-grid-col">
+            <div class="styleCount" data-auto-id="styleCount">{{ n_images }} images found</div>
+        </div>
+        <div class="col-md-4 themed-grid-col">
+            <form action="{{ url_for('explore_images') }}" class="form-inline" method="POST">
+                <div class="form-group">
+                    <div class="input-group">
+                        <select class="custom-select" class="selectpicker form-control" id="inputGroupSelect04"
+                                name="brand_selected">
+                            <option selected>Filter by brand...</option>
+                            {% for brandi in brand_list %}
+                            <option value="{{ brandi }}">{{ brandi }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="grid-container">
+    {% for i in image_items %}
+    <div class="image">
+        <a class="fancybox" href="{{url_for('recommend', selectedImage='') }}{{ i }}" rel="ligthbox">
+            <img alt="{{ i }}" class="fluid img-thumbnail" src="{{ url_for('static',filename='') }}{{ i }}">
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        {% if prev_url %}
+        <li class="page-item">
+            <a class="page-link" href="{{ prev_url }}" tabindex="-1">Previous</a>
+        </li>
+        {% endif %}
+
+        {% for page_num in image_list.iter_pages() %}
+        {% if page_num not in [None, image_list.page] %}
+        <li class="page-item">
+            <a class="page-link" href="{{ url_for('explore_images', page=page_num) }}">{{ page_num }}</a>
+        </li>
+        {% else %}
+        <li class="page-link">
+            <a href="#">{{ page_num }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if next_url %}
+        <li class="page-item">
+            <a class="page-link" href="{{ next_url }}">Next</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+
+{% endblock %}

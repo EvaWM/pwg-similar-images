@@ -1,0 +1,116 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #fff;
+}
+.navbar {
+    background: #4d46b4;
+}
+.nav-link,
+.navbar-brand {
+    color: #fff;
+    cursor: pointer;
+}
+.nav-link {
+    margin-right: 1em !important;
+}
+.nav-link:hover {
+    color: #000;
+}
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.header {
+    background-image:  url('/static/images/pexels-engin-akyurt-1487809.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.description {
+    left: 50%;
+    position: absolute;
+    top: 45%;
+    transform: translate(-50%, -55%);
+    text-align: center;
+}
+.description h1 {
+    color: #eae9f6;
+}
+.description p {
+    color: #fff;
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+.description button {
+    /*border:1px solid #4d46b4;*/
+    background:#fff;
+    border-radius: 1;
+    color:#000;
+}
+.description button:hover {
+    border:1px solid #000;
+    background:#fff;
+    color:#000;
+}
+
+.hero-container {
+  height: 30vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.hero {
+  background: url('/static/images/background.png') no-repeat center center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+  transition: transform 2s;
+}
+
+
+
+main {
+	margin: 0 auto;
+	width: 66.66667%;
+}
+
+.callout-info {
+    border-left-color: #0056b3;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.grid-container > div {
+  align-items: center;
+  font-size: 30px;
+}
+
+.styleCount {
+    align-items: center;
+    font-size: 12px;
+    background: #fffdfd;
+    text-align: center;
+    padding-bottom: 0;
+}
+.image {
+   box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
+}
+.image:hover{
+transform:scale(1.01);
+}
+.image:hover figcaption{
+opacity : 1;
+transition: opacity 0.8s;
+}
+

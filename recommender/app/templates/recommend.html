@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row mb-3">
+      <div class="col-md-6 themed-grid-col">
+        <h4> Input Image </h4>
+    <div class="image">
+    <figure>
+        <img src="{{ url_for('static',filename=selectedImage) }}" alt="{{ i }}" class="fluid img-thumbnail">
+    </figure>
+    </div>
+      </div>
+      <div class="col-md-6 themed-grid-col">
+              <h4> Similar images </h4>
+                <div class="row">
+                    {% for i in recommended_images %}
+                    <div class="col-6">
+                    <div class="image">
+                        <a href="{{ url_for('recommend', selectedImage=['/' + '']) }}{{ i }}">
+                            <img src="{{ url_for('static',filename='') }}{{i}}" alt="{{ i }}" class="fluid img-thumbnail">
+                        </a>
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
+    </div>
+      </div>
+
+{% endblock %}
